@@ -87,12 +87,17 @@ void ACppFPSCharacter::BeginPlay()
 	// Call the base class  
 	Super::BeginPlay();
 
+	if (GunBlueprint == NULL) {
+		UE_LOG(LogTemp, Warning, TEXT("Gun blueprint missing."));
+		return;
+	}
+
 	AGun* Gun;
 
 	Gun = GetWorld()->SpawnActor<AGun>(GunBlueprint);
 	//Attach gun mesh component to Skeleton, doing it here because the skeleton is not yet created in the constructor
 	Gun->AttachToComponent(Mesh1P, FAttachmentTransformRules(EAttachmentRule::SnapToTarget, true), TEXT("GripPoint"));
-	Gun->AnimInstance = Mesh1P->GetAnimInstance();
+	Gun->AnimInstance1P = Mesh1P->GetAnimInstance();
 
 	
 	if (EnableTouchscreenMovement(InputComponent) == false)
