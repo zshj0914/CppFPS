@@ -2,12 +2,12 @@
 
 #pragma once
 
-//#include "Components/HierarchicalInstancedStaticMeshComponent.h"
+#include "Components/HierarchicalInstancedStaticMeshComponent.h"
 #include "GrassComponent.generated.h"
 
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
-class CPPFPS_API UGrassComponent : public UStaticMeshComponent//UHierarchicalInstancedStaticMeshComponent
+class CPPFPS_API UGrassComponent : public UHierarchicalInstancedStaticMeshComponent
 {
 	GENERATED_BODY()
 
@@ -29,7 +29,7 @@ public:
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
-	//void SpawnGrass();
+	void SpawnGrass();
 		
 	
 };

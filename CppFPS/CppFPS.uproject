@@ -13,5 +13,11 @@
 				"Engine"
 			]
 		}
+	],
+	"Plugins": [
+		{
+			"Name": "CodeView",
+			"Enabled": true
+		}
 	]
 }
