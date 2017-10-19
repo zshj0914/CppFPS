@@ -100,8 +100,10 @@ void ATile::BeginPlay()
 }
 void ATile::EndPlay(const EEndPlayReason::Type EndPlayReason)
 {
-	UE_LOG(LogTemp, Warning, TEXT("[%s] EndPlay"), *GetName());
-	Pool->Return(NavMeshBoundsVolume);
+	if (Pool != nullptr && NavMeshBoundsVolume != nullptr) {
+		UE_LOG(LogTemp, Warning, TEXT("[%s] EndPlay"), *GetName());
+		Pool->Return(NavMeshBoundsVolume);
+	}
 }
 
 // Called every frame
